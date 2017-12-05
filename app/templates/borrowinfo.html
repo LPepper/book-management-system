@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="reader-menu">
+
+    <ul class="pure-menu-list" >
+        <li class="pure-menu-item"><a href="{{ url_for('borrowinfo') }}" class="pure-menu-link">我的借阅</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('returnifo') }}" class="pure-menu-link">我的归还</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('myinfo') }}" class="pure-menu-link">我的信息</a></li>
+
+    </ul>
+<table class="pure-table">
+<thead>
+<tr>
+    <th>编号</th>
+    <th>书名</th>
+    <th>借阅时间</th>
+    <th>截止日期</th>
+    <th>归还</th>
+</tr>
+</thead>
+<tbody>
+{% for book in borrowlist  %}
+<tr align="center">
+<td>{{ book.book_id }}</td>
+    {% for b in booklist %}
+         {% if b.id==book.book_id %}
+            <td>{{ b.name }}</td>
+        {% endif %}
+    {% endfor %}
+
+<td>{{ book.borrow_date}}</td>
+<td>{{ book.return_date }}</td>
+<td ><a href="/return/{{ book.book_id }}&{{ book.reader_no }}">归还</a></td>
+</tr>
+{% endfor %}
+</tbody>
+
+
+</table>
+{% endblock %}

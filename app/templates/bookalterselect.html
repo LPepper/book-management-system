@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="manager-menu">
+
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="{{ url_for('readersearch') }}" class="pure-menu-link">读者查询</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('addbook') }}" class="pure-menu-link">增添书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('deletebook') }}" class="pure-menu-link">删除书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('bookalterselect') }}" class="pure-menu-link">修改书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('addreader') }}" class="pure-menu-link">增添读者</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('deletereader') }}" class="pure-menu-link">删除读者</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('readeralterselect') }}" class="pure-menu-link">修改读者</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('overday_info') }}" class="pure-menu-link">超期信息</a></li>
+        <li class="pure-menu-item"><a href="" class="pure-menu-link">书籍借还</a></li>
+    </ul>
+</div>
+    <form class="pure-form"method="post"name="修改图书查询表单" id="select-form">
+    {{ form.csrf_token }}
+    {{ form.id(class="pure-input-2-3",placeholder="书籍编号") }}
+    <button type="submit" class="pure-button">查询</button>
+</form>
+
+{% endblock %}

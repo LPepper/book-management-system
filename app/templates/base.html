@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>图书管理系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+</head>
+<body>
+
+        <div id="head">
+            <img src="{{ url_for('static',filename='logo.png') }}" alt="">
+            <span>图书管理系统</span>
+        </div>
+        <br>
+        <div id="message">
+            {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+        </div>
+
+{% block content %}{% endblock %}
+
+
+<div id="bottom">
+
+    <span>预测未来的最好方式是创造未来</span>
+</div>
+</body>
+</html>

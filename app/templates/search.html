@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="reader-menu">
+
+    <ul class="pure-menu-list" >
+        <li class="pure-menu-item"><a href="{{ url_for('borrowinfo') }}" class="pure-menu-link">我的借阅</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('returnifo') }}" class="pure-menu-link">我的归还</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('myinfo') }}" class="pure-menu-link">我的信息</a></li>
+
+    </ul>
+</div>
+<form class="pure-form"method="post"name="查询图书" id="select-form">
+    {{ form.csrf_token }}
+    {{ form.bookinfo(class="pure-input-2-3",placeholder="查询图书") }}
+    <button type="submit" class="pure-button">查询</button>
+</form>
+
+{% endblock %}

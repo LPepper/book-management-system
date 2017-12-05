@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="manager-menu">
+
+    <ul class="pure-menu-list" id="manager-menu">
+        <li class="pure-menu-item"><a href="{{ url_for('readersearch') }}" class="pure-menu-link">读者查询</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('addbook') }}" class="pure-menu-link">增添书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('deletebook') }}" class="pure-menu-link">删除书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('bookalterselect') }}" class="pure-menu-link">修改书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('addreader') }}" class="pure-menu-link">增添读者</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('deletereader') }}" class="pure-menu-link">删除读者</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('readeralterselect') }}" class="pure-menu-link">修改读者</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('overday_info') }}" class="pure-menu-link">超期信息</a></li>
+        <li class="pure-menu-item"><a href="" class="pure-menu-link">书籍借还</a></li>
+    </ul>
+</div>
+    <form class="pure-form pure-form-aligned"method="post"name="增添读者">
+    {{ form.csrf_token }}
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">学号/工号</label>
+            {{ form.no }}
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password">姓名</label>
+            {{ form.name }}
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">性别</label>
+            {{ form.gender }}
+        </div>
+
+        <div class="pure-control-group">
+            <label for="foo">年级</label>
+            {{  form.grade}}
+        </div>
+
+        <div class="pure-control-group">
+            <label for="foo">院系</label>
+            {{  form.department}}
+        </div>
+
+        <div class="pure-control-group">
+            <label for="foo">类别</label>
+            {{ form.kind }}
+        </div>
+
+        <div class="pure-control-group">
+            <label for="foo">密码</label>
+            {{ form.password }}
+        </div>
+
+        <div class="pure-control-group">
+            <label for="foo">手机号码</label>
+            {{ form.phone }}
+        </div>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">提交</button>
+        </div>
+    </fieldset>
+</form>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <form class="pure-form" method="post"name="登录">
+    {{ form.csrf_token }}
+    <fieldset class="pure-group">
+        {{ form.name(class="pure-input-1-2",placeholder="用户名" ) }}
+        {{ form.password(class="pure-input-1-2",placeholder="密码" )  }}
+    </fieldset>
+        <button type="submit" class="pure-button pure-input-1-2 pure-button-primary" >登录</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="reader-menu">
+
+    <ul class="pure-menu-list" >
+        <li class="pure-menu-item"><a href="{{ url_for('borrowinfo') }}" class="pure-menu-link">我的借阅</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('returnifo') }}" class="pure-menu-link">我的归还</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('myinfo') }}" class="pure-menu-link">我的信息</a></li>
+
+    </ul>
+<table class="pure-table">
+<thead>
+<tr>
+    <th>编号</th>
+    <th>书名</th>
+    <th>数量</th>
+    <th>可借数量</th>
+    <th>价格</th>
+    <th>出版社</th>
+    <th>出版日期</th>
+    <th>摘要</th>
+    <th>借阅</th>
+</tr>
+</thead>
+<tbody>
+{% for book in books %}
+<tr align="center">
+<td>{{ book.id }}</td>
+<td>{{ book.name }}</td>
+<td>{{ book.count}}</td>
+<td>{{ book.available_count }}</td>
+<td>{{ book.price }}</td>
+<td>{{ book.press }}</td>
+<td>{{ book.publish_date }}</td>
+<td>{{ book.summary }}</td>
+{% if book.available_count>0 %}
+    <td><a href="/borrow/{{ book.id }}">借阅</a></td>
+{% endif %}
+</tr>
+</tbody>
+
+{% endfor %}
+
+</table>
+{% endblock %}

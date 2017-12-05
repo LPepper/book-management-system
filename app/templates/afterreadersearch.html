@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="manager-menu">
+
+    <ul class="pure-menu-list"id="manager-menu">
+        <li class="pure-menu-item"><a href="{{ url_for('readersearch') }}" class="pure-menu-link">读者查询</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('addbook') }}" class="pure-menu-link">增添书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('deletebook') }}" class="pure-menu-link">删除书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('bookalterselect') }}" class="pure-menu-link">修改书籍</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('addreader') }}" class="pure-menu-link">增添读者</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('deletereader') }}" class="pure-menu-link">删除读者</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('readeralterselect') }}" class="pure-menu-link">修改读者</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('overday_info') }}" class="pure-menu-link">超期信息</a></li>
+        <li class="pure-menu-item"><a href="" class="pure-menu-link">书籍借还</a></li>
+    </ul>
+</div>
+<table class="pure-table">
+<thead>
+<tr>
+    <th>学号/工号</th>
+    <th>姓名</th>
+    <th>性别</th>
+    <th>年级</th>
+    <th>院系</th>
+    <th>类别</th>
+    <th>密码</th>
+    <th>联系方式</th>
+</tr>
+</thead>
+<tbody>
+{% for r in readers %}
+<tr align="center">
+<td><a href="/borrowinfo/{{ r.no }}">{{ r.no }}</a></td>
+<td>{{ r.name }}</td>
+<td>{{ r.gender}}</td>
+<th>{{ r.grade }}</th>
+<th>{{ r.department }}</th>
+    {% if r.kind==0 %}
+        <td>学生</td>
+    {% elif r.kind==1 %}
+        <td>教职工</td>
+    {% elif r.kind==2 %}
+        <td>管理员</td>
+    {% endif %}
+<td>{{ r.password }}</td>
+<td>{{ r.phone }}</td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

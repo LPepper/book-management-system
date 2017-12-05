@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="pure-menu pure-menu-horizontal"id="reader-menu">
+
+    <ul class="pure-menu-list" >
+        <li class="pure-menu-item"><a href="{{ url_for('borrowinfo') }}" class="pure-menu-link">我的借阅</a> </li>
+        <li class="pure-menu-item"><a href="{{ url_for('returnifo') }}" class="pure-menu-link">我的归还</a></li>
+        <li class="pure-menu-item"><a href="{{ url_for('myinfo') }}" class="pure-menu-link">我的信息</a></li>
+
+    </ul>
+    </div>
+<table class="pure-table">
+<thead>
+<tr>
+    <th>学号/工号</th>
+    <th>姓名</th>
+    <th>类别</th>
+    <th>性别</th>
+    <th>年级</th>
+    <th>院系</th>
+    <th>联系方式</th>
+</tr>
+</thead>
+<tbody>
+<tr align="center">
+<td>{{ reader.no}}</td>
+<td>{{ reader.name }}</td>
+    {% if reader.kind==0 %}
+    <td>学生</td>
+        {% elif reader.kind==1 %}
+        <td>教师</td>
+        {% elif reader.kind==2 %}
+        <td>管理员</td>
+        {% else %}
+        <td></td>
+    {% endif %}
+    <td>{{ reader.gender }}</td>
+    <td>{{ reader.grade }}</td>
+    <td>{{ reader.department }}</td>
+    <td>{{ reader.phone }}</td>
+
+</tr>
+</tbody>
+
+
+</table>
+{% endblock %}
